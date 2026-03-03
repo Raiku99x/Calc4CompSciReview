@@ -143,6 +143,10 @@
             <div class="toggle-pip"></div>
             Formulas
           </button>
+          <button class="btn-fullscreen" id="fsBtn" onclick="toggleFullscreen()" title="Toggle fullscreen">
+            <svg id="fsIcon" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+            Fullscreen
+          </button>
           <div class="site-sub" id="siteSub">1 · Tangent Lines</div>
         </div>
       </div>
@@ -253,6 +257,36 @@
     }
   }
 
+
+  function toggleFullscreen() {
+    var btn  = document.getElementById('fsBtn');
+    var icon = document.getElementById('fsIcon');
+    var expandIcon = '<path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/>';
+    var collapseIcon = '<path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/>';
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().then(function() {
+        icon.innerHTML = collapseIcon;
+        btn.title = 'Exit fullscreen';
+        btn.childNodes[2].textContent = ' Exit';
+      }).catch(function(){});
+    } else {
+      document.exitFullscreen().then(function() {
+        icon.innerHTML = expandIcon;
+        btn.title = 'Toggle fullscreen';
+        btn.childNodes[2].textContent = ' Fullscreen';
+      }).catch(function(){});
+    }
+  }
+
+  document.addEventListener('fullscreenchange', function() {
+    var btn  = document.getElementById('fsBtn');
+    var icon = document.getElementById('fsIcon');
+    if (!document.fullscreenElement) {
+      icon.innerHTML = '<path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/>';
+      btn.title = 'Toggle fullscreen';
+      btn.childNodes[2].textContent = ' Fullscreen';
+    }
+  });
   function tryInit() { katexReady = true; if (siteUnlocked) render(); }
   window.addEventListener('load', function() { if (!siteUnlocked) document.getElementById('usernameInput').focus(); });
 </script>
