@@ -139,6 +139,7 @@
       <div class="header-top">
         <div class="site-title"><em>Calculus for Computer Science</em> — 1st Sem</div>
         <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;justify-content:flex-end;">
+          <button class="btn-fullscreen" id="fsBtn" onclick="toggleFullscreen()" title="Fullscreen"><svg id="fsIcon" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
           <button class="formula-toggle" id="formulaToggle" onclick="toggleFormulas()">
             <div class="toggle-pip"></div>
             Formulas
@@ -152,9 +153,6 @@
             <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
           </svg>
           Topics
-        </button>
-        <button class="btn-fullscreen" id="fsBtn" onclick="toggleFullscreen()" title="Fullscreen">
-          <svg id="fsIcon" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
         </button>
         <nav class="topic-nav" id="topicNav">
           <button class="topic-btn active" onclick="showSection(0,this)"><span class="topic-num">1</span> Tangent Lines</button>
